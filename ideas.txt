@@ -1,0 +1,5 @@
+!hot -> add a <num> flag that lets u limit the list, also make it default print like 3-5 tickers
+
+add title data category
+
+add !price and !search (find a new api)
