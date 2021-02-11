@@ -8,7 +8,6 @@ import os
 from collections import defaultdict
 from pymongo import MongoClient
 from datetime import datetime, timedelta, date
-from subprocess import Popen
 
 # remove bad tickers - returns 1 if deleted or 0 if not deleted
 def deleteData(collection, ticker):
@@ -153,7 +152,8 @@ def main():
       
 # schedule the program 
 if __name__=="__main__":
-    schedule.every().day.at("20:00").do(main)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)       
+    # schedule.every().day.at("04:00").do(main)
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(1)       
+    main()

@@ -1,21 +1,11 @@
-import asyncio
-import discord
-from dotenv import load_dotenv
-from subprocess import Popen
-import os
-from tester import sleep_and_add
+from pymongo import MongoClient
 
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+cluster = MongoClient("mongodb+srv://StocksBot:d7AIgwlYKTQRIWY0@cluster0.jwyf2.mongodb.net/StocksBot?retryWrites=true&w=majority")
 
-client = discord.Client()
+# TODO: Account for Title and Article Content in future!
+db = cluster["Tickers"]
+collection = db["Comments"]
 
-loop = asyncio.get_event_loop()
+myquery = { "date": "2021-02-10" }
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    loop.create_task(sleep_and_add(message))
-
-client.run(TOKEN)
+collection.delete_many(myquery)

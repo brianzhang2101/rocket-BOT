@@ -15,7 +15,7 @@ loop = asyncio.get_event_loop()
 async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='the next rocket to Mars!'))
     print(f'{client.user} has connected to Discord!')
-    Popen('python scan.py')
+    Popen(['python scan.py'], shell=True)
 
 @client.event
 async def on_message(message):
